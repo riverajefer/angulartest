@@ -1,31 +1,22 @@
+dist: trusty
+sudo: required
 language: node_js
 node_js:
   - "7"
-sudo: true
-dist: trusty
-
-branches:
-  only:
-  - master
-
+os:
+  - linux
+env:
+  global:
+    - DBUS_SESSION_BUS_ADDRESS=/dev/null
+    - DISPLAY=:99.0
+    - CHROME_BIN=chromium-browser
 before_script:
- - export CHROME_BIN=/usr/bin/google-chrome
- - export DISPLAY=:99.0
- - sh -e /etc/init.d/xvfb start
- - sudo apt-get update
- - sudo apt-get install -y libappindicator1 fonts-liberation
- - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
- - sudo dpkg -i google-chrome-stable*.deb
-
-script: 
-  - ng test --watch false -cc
-  - npm run e2e
-  - ng build -bh "https://github.com/riverajefer/angulartest"
-
-deploy:
-  provider: pages
-  skip_cleanup: true
-  github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
-  local_dir: dist
-  on:
-    branch: master
+  - sh -e /etc/init.d/xvfb start
+install:
+  - yarn
+script:
+  - yarn run lint
+  - yarn run test -- --watch=false
+  - yarn run pree2e
+  - yarn run e2e
+cache: yarn
