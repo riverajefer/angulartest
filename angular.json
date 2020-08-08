@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "my-ap"
+    }
+  },
+  "defaultProject": "my-ap",
+  "cli": {
+    "analytics": "10151512-0257-457d-8ed2-678bda974341"
+  }
 }
