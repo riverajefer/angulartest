@@ -39,7 +39,7 @@ describe('UsersComponent', () => {
   it(`html user`, async(() => {
     fixture.detectChanges();
     const el = fixture.nativeElement.querySelector('p');
-    expect(el.innerText).toContain('Doe');
+    expect(el.innerText).toContain('Doe2');
   }));
 
 

@@ -10,7 +10,7 @@ export class UsersService {
   getUsers(): Array<{}> {
     return [
       {
-        name: 'Doe',
+        name: 'Doe2',
       },
       {
         name: 'Trump',
